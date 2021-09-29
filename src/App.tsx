@@ -1,9 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Button  from './components/Button'
+import Modal from './components/Modal'
 import Notes from './components/Notes'
-const App: React.FC<note> = ({id,title,desc}) => {
+
+const App: React.FC = () => {
+  const [popUp,setPopUp] = useState(false);
+  
   const addNotes = () => {
-    alert('hello')
+    setPopUp(true)
+  }
+  const close = () => {
+    setPopUp(false)
   }
 
   return (
@@ -12,17 +19,14 @@ const App: React.FC<note> = ({id,title,desc}) => {
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
         <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
       </div>
+      <Modal trigger = {popUp} click = {close}>
+       <form action="">
+         <input type="text" id ='title' placeholder = 'Title' className ='border-[1px] border-black' />
+         <input type="text" id ='title' placeholder = 'Description' />
+       </form>
+      </Modal>
       {/* Notes Container*/}
-      <div id='board' className = "flex flex-wrap gap-4 justify-center container w-full mx-6 border-2 p-2 border-white">
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
-       <Notes/> 
+      <div id='board' className = "flex flex-wrap gap-4 container w-full mx-6 p-2">
       </div>
       </div>
   )
