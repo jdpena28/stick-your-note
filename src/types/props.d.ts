@@ -1,0 +1,3 @@
+type Button = {
+    btnTxt:string
+}
