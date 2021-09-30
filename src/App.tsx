@@ -1,11 +1,9 @@
-import React, {useState,useRef} from 'react'
+import React, {useState} from 'react'
 import Button  from './components/Button'
 import Modal from './components/Modal'
 import Notes from './components/Notes'
 
 const App: React.FC = () => {
-  const inputTitle = useRef<null | string>()
-  const inputDesc = useRef<null | string>()
   const [popUp,setPopUp] = useState<boolean>(false)
   
   const [notes,setNotes] = useState<note[]>([{
@@ -33,8 +31,7 @@ const App: React.FC = () => {
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
         <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
       </div>
-      <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} 
-      title = {inputTitle} desc = {inputDesc}/>
+      <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit}/>
       {/* Notes Container*/}
       <div id='board' className = "flex flex-wrap gap-4 container w-full mx-6 p-2">
         {notes.map(()=> {
