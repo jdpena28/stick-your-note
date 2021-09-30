@@ -4,11 +4,13 @@ import Modal from './components/Modal'
 import Notes from './components/Notes'
 
 const App: React.FC = () => {
+  let num = 0 ;
   const [popUp,setPopUp] = useState<boolean>(false)
   
   const [notes,setNotes] = useState<note[]>([{
-    title: 'hello',
-    desc: 'test'
+    id: 1,
+    title: 'How to add Notes?',
+    desc: 'Click ADD NOTE button and type the title and description for your notes'
   }])
   
   const addNotes = () => {
@@ -22,7 +24,7 @@ const App: React.FC = () => {
     e.preventDefault()
     const txtTitle = e.target.text.value
     const txtDesc = e.target.description.value
-    const newNotes = [...notes,{title:txtTitle,desc:txtDesc}]
+    const newNotes = [...notes,{id:num++,title:txtTitle,desc:txtDesc}]
     setNotes(newNotes)
   }
   return (
@@ -33,12 +35,12 @@ const App: React.FC = () => {
       </div>
       <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit}/>
       {/* Notes Container*/}
-      <div id='board' className = "flex flex-wrap gap-4 container w-full mx-6 p-2">
-        {notes.map(()=> {
-          return <Notes/>
+      <div id='board' className = "flex mx-auto flex-wrap gap-4 container w-full mx-6 p-2">
+        {notes.map((e)=> {
+          return <Notes key = {e.id} title = {e.title} description = {e.desc}/>
         })}
       </div>
-      </div>
+    </div>
   )
 }
 

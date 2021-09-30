@@ -7,3 +7,7 @@ type modal = {
     click: () => void
     handleSubmit: (e:any) => void
 }
+type Notes = {
+    title: string
+    description: string
+}
