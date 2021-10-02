@@ -34,6 +34,10 @@ const App: React.FC = () => {
     })
     setNotes(removeID)
   }
+
+  const editNote = (title:string,desc:string) => {
+    setPopUp(true)
+  }
   return (
     <div className = "relative w-[100vw] h-screen mx-auto font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
       <div className = "pt-3 text-center space-y-4">
@@ -45,7 +49,7 @@ const App: React.FC = () => {
       <div id='board' className = "flex mx-auto flex-wrap gap-4 container w-full mx-6 p-2">
         {notes.map((e)=> {
           return <Notes key = {e.id} title = {e.title} description = {e.desc}
-          removeNote = {() => {removeID(e.id)}}/>
+          removeNote = {() => {removeID(e.id)}} editNote = {() => editNote(e.title,e.desc)}/>
         })}
       </div>
     </div>

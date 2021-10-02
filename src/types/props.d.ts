@@ -11,4 +11,5 @@ type Notes = {
     title: string
     description: string
     removeNote: () => void
+    editNote: () => void
 }
