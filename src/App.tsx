@@ -28,7 +28,7 @@ const App: React.FC = () => {
     setNotes(newNotes)
   }
 
-  const removeID = (id:number) => {
+  const removeID = (id:number|undefined) => {
     const removeID = notes.filter(element => {
       return element.id !== id
     })
@@ -44,7 +44,7 @@ const App: React.FC = () => {
       {/* Notes Container*/}
       <div id='board' className = "flex mx-auto flex-wrap gap-4 container w-full mx-6 p-2">
         {notes.map((e)=> {
-          return <Notes key = {e.id} title = {e.id} description = {e.desc}
+          return <Notes key = {e.id} title = {e.title} description = {e.desc}
           removeNote = {() => {removeID(e.id)}}/>
         })}
       </div>

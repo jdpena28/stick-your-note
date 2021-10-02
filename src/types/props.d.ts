@@ -8,7 +8,7 @@ type modal = {
     handleSubmit: (e:any) => void
 }
 type Notes = {
-    title: number|undefined
+    title: string
     description: string
     removeNote: () => void
 }
