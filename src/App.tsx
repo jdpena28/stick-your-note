@@ -30,12 +30,11 @@ const App: React.FC = () => {
   const handleSubmit = (e:any) => {
     e.preventDefault()
     setNum((num) => num = num+1)
-    const txtTitle = e.target.text.value
-    const txtDesc = e.target.description.value
+    const txtTitle = refTitle.current.value
+    const txtDesc = refDesc.current.value
     const newNotes = [...notes,{id:num,title:txtTitle,desc:txtDesc}]
     setNotes(newNotes)
   }
-
   const removeID = (id:number|undefined) => {
     const removeID = notes.filter(element => {
       return element.id !== id
@@ -45,16 +44,15 @@ const App: React.FC = () => {
   const refTitle = useRef<any>()
   const refDesc = useRef<any>() 
 
+
  const editNote = (title:string,desc:string) => {
     setPopUp(true)
-    refTitle.current.value = title
-    refDesc.current.value = desc
   }
 
  
 
   return (
-    <div className = "relative w-screen h-full pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
+    <div className = "relative w-screen h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
       <div className = "pt-3 text-center space-y-4">
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
         <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
