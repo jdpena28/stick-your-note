@@ -54,18 +54,20 @@ const App: React.FC = () => {
  
 
   return (
-    <div className = "relative w-[100vw] h-screen mx-auto font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
+    <div className = "relative w-screen h-full pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
       <div className = "pt-3 text-center space-y-4">
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
         <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
       </div>
       <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} refTitle = {refTitle} refDesc = {refDesc}/>
       {/* Notes Container*/}
-      <div id='board' className = "flex mx-auto flex-wrap gap-4 container w-full mx-6 p-2">
-        {notes.map((e)=> {
-          return <Notes key = {e.id} title = {e.title} description = {e.desc}
-          removeNote = {() => {removeID(e.id)}} editNote = {() => editNote(e.title,e.desc)}/>
-        })}
+      <div id='board' className = "container w-full mx-auto">
+        <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3 '>
+          {notes.map((e)=> {
+            return <Notes key = {e.id} title = {e.title} description = {e.desc}
+            removeNote = {() => {removeID(e.id)}} editNote = {() => editNote(e.title,e.desc)}/>
+          })}
+        </div>
       </div>
     </div>
   )

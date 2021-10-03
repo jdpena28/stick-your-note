@@ -3,7 +3,7 @@ type Button = {
     addNotes: () => void
 }
 type modal = {
-    refTitle: any 
+    refTitle: any
     refDesc: any
     trigger: boolean
     click: () => void
