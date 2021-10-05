@@ -5,6 +5,8 @@ type Button = {
 type modal = {
     titleValue: any
     descValue: any
+    titleChange:any
+    descChange: any
     refTitle: any
     refDesc: any
     trigger: boolean

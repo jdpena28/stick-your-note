@@ -1,11 +1,13 @@
-import React, {useState, useRef,useEffect} from 'react'
+import React, {useState, useRef} from 'react'
 import Button  from './components/Button'
 import Modal from './components/Modal'
 import Notes from './components/Notes'
+
+
 const App: React.FC = () => {
-  const [titleValue,setTitleValue] = useState<string|undefined>('')
-  const [descValue,setDescValue] = useState<string|undefined>('')
   const [num,setNum] = useState<number>(2)
+  const [titleValue,setTitleValue] = useState<string>()
+  const [descValue,setDescValue] = useState<string>()
   const [popUp,setPopUp] = useState<boolean>(false)
   const [notes,setNotes] = useState<note[]>([
     {
@@ -46,6 +48,14 @@ const App: React.FC = () => {
   const refTitle = useRef<any>()
   const refDesc = useRef<any>() 
 
+  const titleChange = (e:any) => {
+    setTitleValue(e.target.value)
+  }
+
+  const descChange = (e:any) => {
+    setDescValue(e.target.value)
+  }
+
 
   return (
     <div className = "relative w-screen h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
@@ -54,7 +64,8 @@ const App: React.FC = () => {
         <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
       </div>
       <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} 
-      refTitle = {refTitle} refDesc = {refDesc} titleValue = {titleValue} descValue = {descValue}/>
+      refTitle = {refTitle} refDesc = {refDesc} titleChange = {(e:any)=> {titleChange(e)}}
+      descChange = {(e:any) => {descChange(e)}} titleValue = {titleValue} descValue = {descValue}/>
       {/* Notes Container*/}
       <div id='board' className = "container w-full mx-auto">
         <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3 '>
