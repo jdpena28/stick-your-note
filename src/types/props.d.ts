@@ -12,6 +12,7 @@ type modal = {
     trigger: boolean
     click: () => void
     handleSubmit: (e:any) => void
+    submitBtnTxt: string
 }
 type Notes = {
     title: string
