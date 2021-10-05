@@ -3,6 +3,8 @@ type Button = {
     addNotes: () => void
 }
 type modal = {
+    titleValue: any
+    descValue: any
     refTitle: any
     refDesc: any
     trigger: boolean
@@ -13,5 +15,5 @@ type Notes = {
     title: string
     description: string
     removeNote: () => void
-    editNote: () => void
+    editNote: any
 }

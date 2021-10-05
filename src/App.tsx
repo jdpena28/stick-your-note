@@ -2,9 +2,9 @@ import React, {useState, useRef,useEffect} from 'react'
 import Button  from './components/Button'
 import Modal from './components/Modal'
 import Notes from './components/Notes'
-
-
 const App: React.FC = () => {
+  const [titleValue,setTitleValue] = useState<string|undefined>('')
+  const [descValue,setDescValue] = useState<string|undefined>('')
   const [num,setNum] = useState<number>(2)
   const [popUp,setPopUp] = useState<boolean>(false)
   const [notes,setNotes] = useState<note[]>([
@@ -19,9 +19,10 @@ const App: React.FC = () => {
       desc: 'Double Click the edit icon to edit text content'
     }
 ])
-  
-  const addNotes = () => {
+  const addNotes = (id?:number,title?:string,desc?:string) => {
     setPopUp(true)
+    setTitleValue(title)
+    setDescValue(desc)
   }
   const close = () => {
     setPopUp(false)
@@ -30,9 +31,9 @@ const App: React.FC = () => {
   const handleSubmit = (e:any) => {
     e.preventDefault()
     setNum((num) => num = num+1)
-    const txtTitle = refTitle.current.value
-    const txtDesc = refDesc.current.value
-    const newNotes = [...notes,{id:num,title:txtTitle,desc:txtDesc}]
+    const title = refTitle.current.value
+    const desc = refDesc.current.value
+    const newNotes = [...notes,{id:num,title,desc}]
     setNotes(newNotes)
   }
   const removeID = (id:number|undefined) => {
@@ -41,15 +42,10 @@ const App: React.FC = () => {
     })
     setNotes(removeID)
   }
+  
   const refTitle = useRef<any>()
   const refDesc = useRef<any>() 
 
-
- const editNote = (title:string,desc:string) => {
-    setPopUp(true)
-  }
-
- 
 
   return (
     <div className = "relative w-screen h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
@@ -57,13 +53,14 @@ const App: React.FC = () => {
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
         <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
       </div>
-      <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} refTitle = {refTitle} refDesc = {refDesc}/>
+      <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} 
+      refTitle = {refTitle} refDesc = {refDesc} titleValue = {titleValue} descValue = {descValue}/>
       {/* Notes Container*/}
       <div id='board' className = "container w-full mx-auto">
         <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3 '>
           {notes.map((e)=> {
             return <Notes key = {e.id} title = {e.title} description = {e.desc}
-            removeNote = {() => {removeID(e.id)}} editNote = {() => editNote(e.title,e.desc)}/>
+            removeNote = {() => {removeID(e.id)}} editNote = {()=>addNotes(e.id,e.title,e.desc)}/>
           })}
         </div>
       </div>
