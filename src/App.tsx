@@ -6,6 +6,7 @@ import Notes from './components/Notes'
 
 const App: React.FC = () => {
   const [num,setNum] = useState<number>(2)
+  const [id,setID] = useState<number | null>()
   const [titleValue,setTitleValue] = useState<string>()
   const [descValue,setDescValue] = useState<string>()
   const [popUp,setPopUp] = useState<boolean>(false)
@@ -23,6 +24,7 @@ const App: React.FC = () => {
 ])
   const addNotes = (id?:number,title?:string,desc?:string) => {
     setPopUp(true)
+    setID(id)
     setTitleValue(title)
     setDescValue(desc)
   }
@@ -32,12 +34,23 @@ const App: React.FC = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    setNum((num) => num = num+1)
-    const title = refTitle.current.value
-    const desc = refDesc.current.value
-    const newNotes = [...notes,{id:num,title,desc}]
-    setNotes(newNotes)
+    if(id === null) {
+      setNum((num) => num = num+1)
+      const title = refTitle.current.value
+      const desc = refDesc.current.value
+      const newNotes = [...notes,{id:num,title,desc}]
+      setNotes(newNotes)
   }
+  else {
+    notes.map(e => {
+      if (e.id === id) {
+        e.title = titleValue
+        e.desc = descValue
+      }
+    })
+  }
+  setID(null)
+}
   const removeID = (id:number|undefined) => {
     const removeID = notes.filter(element => {
       return element.id !== id
