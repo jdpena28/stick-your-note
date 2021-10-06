@@ -6,6 +6,5 @@ export default defineConfig({
   server: {
     host: false
   },
-  base: '/stickynote/',
   plugins: [reactRefresh()]
 })
