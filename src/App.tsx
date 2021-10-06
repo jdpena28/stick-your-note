@@ -6,10 +6,13 @@ import Notes from './components/Notes'
 
 const App: React.FC = () => {
   const [num,setNum] = useState<number>(3)
-  const [id,setID] = useState<number>()
+  const [id,setID] = useState<number|undefined>()
   const [titleValue,setTitleValue] = useState<string>()
   const [descValue,setDescValue] = useState<string>()
   const [popUp,setPopUp] = useState<boolean>(false)
+  const db = window.localStorage.getItem('noteDB')
+  const [notesDB,setNotesDB] = useState<any>(db)
+  
   const [notes,setNotes] = useState<note[]>([
     {
     id: 1,
@@ -34,7 +37,7 @@ const App: React.FC = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    if(id === null) {
+    if(id === undefined) {
       setNum((num) => num = num+1)
       const title = refTitle.current.value
       const desc = refDesc.current.value
@@ -46,10 +49,12 @@ const App: React.FC = () => {
       if (e.id === id) {
         e.title = titleValue
         e.desc = descValue
+        setPopUp(false)
       }
     })
   }
-  setID(null)
+  setID(undefined)
+  window.localStorage.setItem('noteDB',JSON.stringify(notes))
 }
   const removeID = (id:number|undefined) => {
     const removeID = notes.filter(element => {
@@ -74,12 +79,12 @@ const App: React.FC = () => {
     <div className = "relative w-screen h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
       <div className = "pt-3 text-center space-y-4">
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
-        <Button addNotes = {addNotes} btnTxt = "ADD NOTE"/>
+        <Button addNotes = {()=>{addNotes(0)}} btnTxt = "ADD NOTE"/>
       </div>
       <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} 
       refTitle = {refTitle} refDesc = {refDesc} titleChange = {(e:any)=> {titleChange(e)}}
       descChange = {(e:any) => {descChange(e)}} titleValue = {titleValue} 
-      descValue = {descValue} submitBtnTxt = {!id?'Add':'Edit'}/>
+      descValue = {descValue} submitBtnTxt = {!id ? 'Add':'Edit'}/>
       {/* Notes Container*/}
       <div id='board' className = "container w-full mx-auto">
         <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3 '>
