@@ -9,7 +9,7 @@ const Modal:React.FC<modal|null> = ({refTitle,refDesc,trigger,click,handleSubmit
         onClick = {click}/>
         <form onSubmit = {handleSubmit} className = 'w-80 h-96 flex flex-col gap-y-3 align-center items-center justify-center'>
           <input type="text" ref = {refTitle} onChange = {titleChange} value = {titleValue} name = 'text' id ='title' placeholder = 'Title' className ='w-[95%] border-[1px] border-gray-600 rounded-md p-1 mt-3' />
-          <textarea name="description" ref = {refDesc}  onChange = {descChange} value = {descValue} id="desc" className = 'border-[1px] border-gray-600 rounded-md p-1' cols = '40' rows = "8" placeholder = 'Description'></textarea>
+          <textarea name="description" ref = {refDesc}  onChange = {descChange} value = {descValue} id="desc" className = 'border-[1px] border-gray-600 rounded-md p-1' cols = {40} rows = {8} placeholder = 'Description'></textarea>
           <button type = 'submit' className = 'w-20 rounded-md block font-semibold bg-gradient-to-r from-green-400 to-blue-500'>{submitBtnTxt}</button>
         </form>
       </div>
