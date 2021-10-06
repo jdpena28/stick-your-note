@@ -44,13 +44,14 @@ const App: React.FC = () => {
       setNotes(newNotes)
   }
   else {
-    notes.map(e => {
+   notes.map(e => {
       if (e.id === id) {
         e.title = titleValue
         e.desc = descValue
         setPopUp(false)
       }
     })
+    setNotes(notes)    
   }
   setID(undefined)
 }
