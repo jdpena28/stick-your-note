@@ -75,7 +75,7 @@ const App: React.FC = () => {
 
 
   return (
-    <div className = "relative w-screen h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
+    <div className = "relative w-screen min-h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
       <div className = "pt-3 text-center space-y-4">
         <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
         <Button addNotes = {()=>{addNotes(0)}} btnTxt = "ADD NOTE"/>
@@ -86,7 +86,7 @@ const App: React.FC = () => {
       descValue = {descValue} submitBtnTxt = {!id ? 'Add':'Edit'}/>
       {/* Notes Container*/}
       <div id='board' className = "container w-full mx-auto">
-        <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3 '>
+        <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3'>
           {notes.map(e => {
             return <Notes key = {e.id} title = {e.title} description = {e.desc}
             removeNote = {() => {removeID(e.id)}} editNote = {()=>addNotes(e.id,e.title,e.desc)}/>
