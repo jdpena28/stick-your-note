@@ -1,10 +1,10 @@
-import React, { useState } from "react"
+import React from "react"
 import {CgClose} from 'react-icons/cg'
 
  
 const Modal:React.FC<modal|null> = ({refTitle,refDesc,trigger,click,handleSubmit,titleChange,descChange,titleValue,descValue,submitBtnTxt}) => {
     return trigger?(
-      <div className = 'bg-white w-80 h-96 mx-auto rounded-[2rem] absolute inset-32 z-50'>
+      <div className = 'bg-white w-80 h-96 mx-auto rounded-[2rem] absolute left-0 right-0 mx-auto z-50'>
         <CgClose className = 'cursor-pointer pt-4 ml-2 w-6 h-auto fill-current text-red-800 absolute right-4'
         onClick = {click}/>
         <form onSubmit = {handleSubmit} className = 'w-80 h-96 flex flex-col gap-y-3 align-center items-center justify-center'>
