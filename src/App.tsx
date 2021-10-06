@@ -1,4 +1,5 @@
 import React, {useState, useRef} from 'react'
+import {useLocalStorage} from 'usehooks-ts'
 import Button  from './components/Button'
 import Modal from './components/Modal'
 import Notes from './components/Notes'
@@ -10,10 +11,8 @@ const App: React.FC = () => {
   const [titleValue,setTitleValue] = useState<string>()
   const [descValue,setDescValue] = useState<string>()
   const [popUp,setPopUp] = useState<boolean>(false)
-  const db = window.localStorage.getItem('noteDB')
-  const [notesDB,setNotesDB] = useState<any>(db)
-  
-  const [notes,setNotes] = useState<note[]>([
+
+  const [notes,setNotes] = useLocalStorage<note[]>('notes',[
     {
     id: 1,
     title: 'How to add Notes?',
@@ -54,7 +53,6 @@ const App: React.FC = () => {
     })
   }
   setID(undefined)
-  window.localStorage.setItem('noteDB',JSON.stringify(notes))
 }
   const removeID = (id:number|undefined) => {
     const removeID = notes.filter(element => {
@@ -88,7 +86,7 @@ const App: React.FC = () => {
       {/* Notes Container*/}
       <div id='board' className = "container w-full mx-auto">
         <div className = 'flex flex-wrap justify-center md:grid-cols-3 lg:grid-cols-6 gap-3 '>
-          {notes.map((e)=> {
+          {notes.map(e => {
             return <Notes key = {e.id} title = {e.title} description = {e.desc}
             removeNote = {() => {removeID(e.id)}} editNote = {()=>addNotes(e.id,e.title,e.desc)}/>
           })}
