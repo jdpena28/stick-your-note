@@ -2,6 +2,7 @@ import React, {useState, useRef} from 'react'
 import {useLocalStorage} from 'usehooks-ts'
 import notepad from '../public/notepad.png'
 import Button  from './components/Button'
+import Footer from './components/Footer'
 import Modal from './components/Modal'
 import Notes from './components/Notes'
 
@@ -94,6 +95,7 @@ const App: React.FC = () => {
           })}
         </div>
       </div>
+      <Footer/>
     </div>
   )
 }
