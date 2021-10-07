@@ -4,13 +4,13 @@ import {CgClose} from 'react-icons/cg'
  
 const Modal:React.FC<modal|null> = ({refTitle,refDesc,trigger,click,handleSubmit,titleChange,descChange,titleValue,descValue,submitBtnTxt}) => {
     return trigger?(
-      <div className = 'bg-white w-80 h-96 mx-auto rounded-[2rem] absolute left-0 right-0 mx-auto z-50'>
+      <div className = 'bg-[#C0C0C0] bg-opacity-95 w-80 h-96 mx-auto rounded-[2rem] absolute left-0 right-0 mx-auto z-50'>
         <CgClose className = 'cursor-pointer pt-4 ml-2 w-6 h-auto fill-current text-red-800 absolute right-4'
         onClick = {click}/>
-        <form onSubmit = {handleSubmit} className = 'w-80 h-96 flex flex-col gap-y-3 align-center items-center justify-center'>
-          <input type="text" ref = {refTitle} onChange = {titleChange} value = {titleValue} name = 'text' id ='title' placeholder = 'Title' className ='w-[95%] border-[1px] border-gray-600 rounded-md p-1 mt-3' required />
-          <textarea name="description" ref = {refDesc}  onChange = {descChange} value = {descValue} id="desc" className = 'border-[1px] border-gray-600 rounded-md p-1' cols = {40} rows = {8} placeholder = 'Description' required></textarea>
-          <button type = 'submit' className = 'w-20 rounded-md block font-semibold bg-gradient-to-r from-green-400 to-blue-500'>{submitBtnTxt}</button>
+        <form onSubmit = {handleSubmit} className = 'font-tertiary text-lg w-80 h-96 flex flex-col gap-y-3 align-center items-center justify-center'>
+          <input type="text" ref = {refTitle} onChange = {titleChange} value = {titleValue} name = 'text' id ='title' placeholder = 'Title' className ='w-[93%] rounded-md p-1 mt-8' required />
+          <textarea name="description" ref = {refDesc}  onChange = {descChange} value = {descValue} id="desc" className = 'rounded-md p-1' cols = {39} rows = {8} placeholder = 'Description' required></textarea>
+          <button type = 'submit' className = 'text-white bg-[#373736] opacity-7 font-primary w-20 rounded-md block font-semibold'>{submitBtnTxt}</button>
         </form>
       </div>
     ):<></>

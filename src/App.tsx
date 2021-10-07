@@ -75,9 +75,9 @@ const App: React.FC = () => {
 
 
   return (
-    <div className = "relative w-screen min-h-screen pb-24 font-sans bg-gradient-to-r from-green-400 to-blue-500 space-y-3">
+    <div className = "relative w-screen min-h-screen space-y-3" id = 'bg-container'>
       <div className = "pt-3 text-center space-y-4">
-        <h1 className = "text-white text-4xl mx-auto bg-gray-500 w-max p-2 rounded-xl bg-opacity-80">📃Stick Your Note📃</h1>
+        <h1 className = "font-secondary text-4xl mx-auto" id = 'h1title'>Stick Your Note <img className = 'inline pb-2' src="./public/notepad.png" alt="notepad icon" width = {36} /></h1>
         <Button addNotes = {()=>{addNotes(0)}} btnTxt = "ADD NOTE"/>
       </div>
       <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} 

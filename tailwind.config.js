@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: "'Caveat', cursive"
+        primary: "'Chilanka', cursive",
+        secondary: "'Satisfy', cursive",
+        tertiary: "'Sunshiney', cursive",
       }
     },
   },
