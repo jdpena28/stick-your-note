@@ -77,7 +77,7 @@ const App: React.FC = () => {
   return (
     <div className = "relative w-screen min-h-screen space-y-3" id = 'bg-container'>
       <div className = "pt-3 text-center space-y-4">
-        <h1 className = "font-secondary text-4xl mx-auto" id = 'h1title'>Stick Your Note <img className = 'inline pb-2' src="./public/notepad.png" alt="notepad icon" width = {36} /></h1>
+        <h1 className = "font-secondary text-4xl mx-auto" id = 'h1title'>Stick Your Note <img className = 'inline pb-2' src={"./public/notepad.png"} alt="notepad icon" width = {36} /></h1>
         <Button addNotes = {()=>{addNotes(0)}} btnTxt = "ADD NOTE"/>
       </div>
       <Modal trigger = {popUp} click = {close} handleSubmit = {handleSubmit} 
