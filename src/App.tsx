@@ -45,6 +45,7 @@ const App: React.FC = () => {
       const desc = refDesc.current.value
       const newNotes = [...notes,{id:num,title,desc}]
       setNotes(newNotes)
+      setPopUp(false)
   }
   else {
    notes.map(e => {
