@@ -9,7 +9,7 @@ import Notes from './components/Notes'
 
 const App: React.FC = () => {
   const [num,setNum] = useState<number>(3)
-  const [id,setID] = useState<number|undefined>()
+  const [id,setID] = useState<number|undefined>(0)
   const [titleValue,setTitleValue] = useState<string>()
   const [descValue,setDescValue] = useState<string>()
   const [popUp,setPopUp] = useState<boolean>(false)
@@ -38,7 +38,8 @@ const App: React.FC = () => {
 
   const handleSubmit = (e:any) => {
     e.preventDefault()
-    if(id === undefined) {
+    console.log(id)
+    if(id === 0) {
       setNum((num) => num = num+1)
       const title = refTitle.current.value
       const desc = refDesc.current.value
@@ -53,9 +54,9 @@ const App: React.FC = () => {
         setPopUp(false)
       }
     })
-    setNotes(notes)    
+    setNotes(notes)   
   }
-  setID(undefined)
+  setID(0)
 }
   const removeID = (id:number|undefined) => {
     const removeID = notes.filter(element => {
@@ -77,7 +78,7 @@ const App: React.FC = () => {
 
 
   return (
-    <div className = "relative w-screen min-h-screen space-y-3" id = 'bg-container'>
+    <div className = "relative w-screen min-h-screen space-y-3 bg-container">
       <div className = "pt-3 text-center space-y-4">
         <h1 className = "font-secondary text-4xl mx-auto" id = 'h1title'>Stick Your Note <img className = 'inline pb-2' src = {notepad} alt="notepad icon" width = {36} /></h1>
         <Button addNotes = {()=>{addNotes(0)}} btnTxt = "ADD NOTE"/>

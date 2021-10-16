@@ -4,7 +4,7 @@ import {CgClose} from 'react-icons/cg'
  
 const Modal:React.FC<modal|null> = ({refTitle,refDesc,trigger,click,handleSubmit,titleChange,descChange,titleValue,descValue,submitBtnTxt}) => {
     return trigger?(
-      <div className = 'bg-[#C0C0C0] bg-opacity-95 w-80 h-96 mx-auto rounded-[2rem] absolute left-0 right-0 mx-auto z-50'>
+      <div className = 'bg-[#C0C0C0] bg-opacity-95 w-80 h-96 rounded-[2rem] absolute left-0 right-0 mx-auto z-50'>
         <CgClose className = 'cursor-pointer pt-4 ml-2 w-6 h-auto fill-current text-black absolute right-4'
         onClick = {click}/>
         <form onSubmit = {handleSubmit} className = 'font-tertiary text-lg w-80 h-96 flex flex-col gap-y-3 align-center items-center justify-center'>
