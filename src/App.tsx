@@ -23,7 +23,7 @@ const App: React.FC = () => {
     {
       id: 2,
       title: 'How to edit Notes?',
-      desc: 'Double Click the edit icon to edit text content'
+      desc: 'Click the edit icon to edit text content'
     }
 ])
   const addNotes = (id?:number,title?:string,desc?:string) => {
