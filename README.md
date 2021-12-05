@@ -3,4 +3,3 @@
 ## Functionality
 A simple CRUD application, you can post all your memos here and forget about this site xD
 ### Made with VR2T - Vite, React Tailwind and Typescript
-#### Procrastinating ... Work In Progress 🚧💤
